@@ -10,7 +10,7 @@
 	begin
 	update Notes set Title=@title,Description=@desc where Notes.Id=@id
 	end
-	exec UpdateNote @title='new note',@desc='ahs sggs',@id=1
+	exec UpdateNote @title='new note',@desc='this is new note',@id=1
 
 3] Add a collaborator to a note
 	Alter proc AddCollaborator(@NoteId int,@UserId int) as
@@ -32,3 +32,6 @@
 	select Notes.Title,Users.Name,Labels.Name from Notes left join Collaborators on Notes.Id=Collaborators.NoteId left join Users on Users.Id=Collaborators.UserId left join NoteLabels on Notes.Id=NoteLabels.NoteId left join Labels on Labels.Id=NoteLabels.LabelId
 	end
 	exec GetAllNotes
+
+	
+	

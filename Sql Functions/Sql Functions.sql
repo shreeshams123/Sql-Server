@@ -1,12 +1,13 @@
 1] Write a scalar function GetUserCollaborations that takes a user ID and returns the total number of notes they are collaborating on.
-	create function GetUserCollaborations(@UserId int) returns int as
+	create function GetUserCollaborationsValues(@UserId int) returns int as
 	Begin
-	Declare @Count as int;
-	select @Count= count(Collaborators.UserId) from Collaborators where Collaborators.UserId=@UserId;
-	return @Count
+	return(
+	select  count(Collaborators.UserId) from Collaborators where Collaborators.UserId=@UserId
+)
 	End
 	select FunDoDb.dbo.GetUserCollaborations(1) as getCollaborators;
-
+	
+	
 2] Write a scalar function IsArchived that takes a note ID and returns 1 if the note is archived, otherwise 0.
 	create function IsNoteArchived(@NoteId int) returns int as 
 	begin
